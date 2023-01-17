@@ -1,0 +1,36 @@
+<%= form_with model: question, local: true do |form| %>
+ <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(question.errors.count, "error") %> prohibited
+        this question from being saved:
+      </h2>
+      <ul>
+        <% question.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :Question %><br>
+    <%= form.text_area :body, class: "form-control", rows: 3 %>
+  </div>
+
+  Question Options:
+  <ul>
+    <%= form.fields_for :question_options do |question_options_form| %>
+      <li>
+        <%= question_options_form.label :option %>
+        <%= question_options_form.text_area :body, class: "form-control" %>
+ 
+        <%= question_options_form.label :personlity_type %>
+        <%= question_options_form.select :personlity_type, [['Extrovert', 'Extrovert'],['Introvert', 'Introvert'], ['Ambivert', 'Ambivert']] %>
+
+      </li><br/>
+    <% end %>
+  </ul>
+  
+  <%= form.submit class: "btn btn-success" %>
+<% end %>

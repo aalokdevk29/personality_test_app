@@ -1,0 +1,17 @@
+<h1>All Questions</h1>
+<%= link_to "Add Question", new_question_path, class: "btn btn-primary" %>
+<br/><br/>
+
+<% @questions.each_with_index do |question, index| %>
+  <span><%= index + 1 %>.</span>
+  <span><%= question.body %></span><br><br>
+
+  <p>
+  <%= link_to "Show", question_path(question), class: "btn btn-success" %>
+  <%= link_to "Edit", edit_question_path(question), class: "btn btn-warning" %>
+  <%= link_to "Delete", question_path(question), class: "btn btn-danger",
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+  </p>
+  <hr/>
+<% end %>

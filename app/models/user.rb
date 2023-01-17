@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :personality_scores
+  has_many :personality_scores, dependent: :destroy
 
   def check_personality
     introvert_score = self.personality_scores.map(&:introvert_score).sum
