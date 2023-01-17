@@ -3,9 +3,9 @@
 one:
   question: one
   body: MyText
-  type: 
+  personlity_type: Extrovert
 
 two:
   question: two
   body: MyText
-  type: 
+  personlity_type: Introvert
