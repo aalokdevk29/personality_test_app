@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  introvert_score: 1
+  extrovert_score: 1
+
+two:
+  user: two
+  introvert_score: 1
+  extrovert_score: 1
