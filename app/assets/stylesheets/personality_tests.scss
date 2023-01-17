@@ -1,0 +1,33 @@
+// Place all the styles related to the personality_tests controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.title-text {
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f5f7f9;
+  padding: 50px;
+
+  .question-text {
+    font-size: 24px;
+    margin-bottom: 28px;
+  }
+
+  .question-option {
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+
+    .question-option-text {
+      font-size: 16px;
+    }
+
+  }
+  .next-btn {
+    margin-top: 40px;
+  }
+}
