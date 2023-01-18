@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :check_ability
 
   def index
     @questions = Question.all
@@ -44,5 +45,9 @@ class QuestionsController < ApplicationController
 
   def set_question
     @question = Question.find(params[:id])
+  end
+
+  def check_ability
+    redirect_to root_path unless current_user.admin?
   end
 end
