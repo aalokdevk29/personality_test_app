@@ -16,9 +16,8 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
-//= require personality_tests
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   clickOption();
   submitQuestion();
 });
