@@ -19,6 +19,11 @@
 //= require personality_tests
 
 $(document).ready(function() {
+  clickOption();
+  submitQuestion();
+});
+
+function clickOption(){
   $(".question-option").click(function(e) {
     $(".question-option").css('background-color', 'white');
 
@@ -30,7 +35,9 @@ $(document).ready(function() {
     $('.submit').attr('data-option-id', option_id);
     $('.submit').removeClass("disabled");
   });
+}
 
+function submitQuestion(){
   $(".submit").click(function(e) {
     question_id = $(this).data("question-id");
     option_id = $(this).data("option-id");
@@ -39,17 +46,11 @@ $(document).ready(function() {
       url: "/question_attempt",
       method: "get",
       data: { question_id: question_id, option_id: option_id },
-      headers: {
-        "X-CSRF-Token": $("meta[name=csrf-token]").attr('content')
-      },
-      dataType: 'script',
-      fail: function(xhr) {
-        $that.removeClass('loading');
-        custom_message('warning', "Something went wrong");
+      success: function(response){
+        $('.question-section').html(response)
+        clickOption();
+        submitQuestion();
       }
-    }).then(function (response) {
-      console.log("success");
     });
-
   });
-});
+}

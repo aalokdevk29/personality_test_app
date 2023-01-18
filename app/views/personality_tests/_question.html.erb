@@ -1,0 +1,16 @@
+<div class="card question">
+  <p>Question <%=  qeuestion_no %>/5</p>
+  <p class="question-text"><%= question.body %></p>
+
+  <% question.question_options.each_with_index do |option, index| %>
+    <div class="options">
+      <div class="question-option" data-question-id="<%= question.id %>" data-option-id="<%= option.id %>">
+        <span>(<%= index + 1 %>)</span>
+        <span class="question-option-text"><%= option.body %></span>
+      </div>
+    </div>
+  <% end %>
+  <div class="next-btn">
+    <%= link_to "Next Question", "javascript:void(0)", class: "btn btn-primary btn-lg submit disabled" %>
+  </div>
+</div>

@@ -3,13 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :personality_scores, dependent: :destroy
+  has_one :personality_score, dependent: :destroy
 
   enum role: { user: 0, admin: 1 } 
 
   def check_personality
-    introvert_score = self.personality_scores.map(&:introvert_score).sum
-    extrovert_score = self.personality_scores.map(&:extrovert_score).sum
+    introvert_score = self.personality_score.introvert_score
+    extrovert_score = self.personality_score.extrovert_score
 
     introvert_score > extrovert_score ? "introvert" : "extrovert"
   end

@@ -1,23 +1,7 @@
-<h1 class="my-3 text-center title-text">Are you an introvert or an extrovert?</h1>
-<% if current_user.personality_scores.count <= @questions.count %>
-  <% @questions.each do |question| %>
-    <div class="card question">
-      <p>Question 1/<%= @questions.count %></p>
-      <p class="question-text"><%= question.body %></p>
-
-      <% question.question_options.each_with_index do |option, index| %>
-        <div class="options">
-          <div class="question-option" data-question-id="<%= question.id %>" data-option-id="<%= option.id %>">
-            <span>(<%= index + 1 %>)</span>
-            <span class="question-option-text"><%= option.body %></span>
-          </div>
-        </div>
-      <% end %>
-      <div class="next-btn">
-        <%= link_to "Next Question", "#", class: "btn btn-primary btn-lg submit disabled" %>
-      </div>
-    </div>
+<div class="question-section">
+  <% if @qeuestion_no > 5 %>
+    <%= render "result_page"%>
+  <% else %>
+    <%= render "question", question: @question, qeuestion_no: @qeuestion_no %>
   <% end %>
-<% else %>
-<%= render "result_page" %>
-<% end %>
+</div>
