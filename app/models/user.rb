@@ -13,4 +13,8 @@ class User < ApplicationRecord
 
     introvert_score > extrovert_score ? "introvert" : "extrovert"
   end
+
+  def admin?
+    self.role == "admin"
+  end
 end

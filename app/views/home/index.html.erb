@@ -1,4 +1,6 @@
-<%= link_to "All Questios", questions_path, class: "btn btn-primary btn-lg" %>
+<% if current_user.admin? %>
+  <%= link_to "All Questios", questions_path, class: "btn btn-primary btn-lg" %>
+<% end %>
 
 <div class="container text-center main-div">
   <h1>Hello, Welcome to you our application</h1>
